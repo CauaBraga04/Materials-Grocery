@@ -1,6 +1,11 @@
 import React from "react";
+import "./css/TopNavCSS.css";
 import Button from "@mui/material/Button";
+import MenuIcon from "@mui/icons-material/Menu";
+import IconButton from "@mui/material/IconButton";
+import AppBar from "@mui/material/AppBar";
 import { Drawer } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 
 function TopNavComponent() {
@@ -10,18 +15,25 @@ function TopNavComponent() {
     setOpen(newOpen);
   };
 
+  const navigate = useNavigate();
+
   return (
     <>
+    <AppBar position="static">
       <div id="Main">
-        <h1>Grocery List Manager</h1>
+          <IconButton onClick={toggleDrawer(true)} aria-label="menu">
+            <MenuIcon />
+          </IconButton>
+        <h1 id="Title">Grocery List Manager</h1>
+        <div></div>
       </div>
-      <button onClick={toggleDrawer(true)}>Open drawer</button>
+    </AppBar>  
       <Drawer open={open} onClose={toggleDrawer(false)}>
-        Hello, this is the drawer content!
         <br />
-        <Button>Primary</Button>
+        <Button onClick={() => navigate("/current-list", {replace: true})}>Current List</Button>
         <br />
-        <Button>Secondary</Button>
+        <Button onClick={() => navigate("/all-lists", {replace: true})}>All Lists</Button>
+        <br />
       </Drawer>
     </>
   );

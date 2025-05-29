@@ -1,0 +1,13 @@
+#Main {
+    display: inline-flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+#test {
+    border-bottom: 1px solid black;
+}
+
+#Title {
+    text-align: center;
+}
